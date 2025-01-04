@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video & Music</title>
+    <title>RGB Button with Video & Music</title>
     <style>
         body {
             margin: 0;
@@ -31,39 +31,54 @@
             position: relative;
             z-index: 10;
         }
-        #banner-background {
+        #rgb-background {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background: url('BANNER.gif') center center / cover no-repeat;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            background-size: 400% 400%;
+            border-radius: 50%;
+            animation: rgbAnimation 2s infinite;
             z-index: -1;
+        }
+        @keyframes rgbAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         #start-button {
             position: relative;
-            background-color: white;
-            color: black;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
+            background-color: black;
+            width: 60px;
+            height: 60px;
+            border: 3px solid white;
+            border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+        }
+        #start-button:before {
+            content: "→";
+            font-size: 40px;
+            color: white;
         }
         #start-button:hover {
-            background-color: #f1f1f1;
+            background-color: #333;
         }
     </style>
 </head>
 <body>
 
 <div id="button-container">
-    <div id="banner-background"></div>
-    <button id="start-button">Start Video & Music</button>
+    <div id="rgb-background"></div>
+    <button id="start-button"></button>
 </div>
 
 <div id="video-container">
@@ -86,7 +101,7 @@
     const music = document.getElementById('music');
 
     startButton.addEventListener('click', () => {
-        buttonContainer.style.display = 'none'; // Скрыть кнопку и GIF
+        buttonContainer.style.display = 'none'; // Убрать кнопку и RGB-фон
         videoContainer.style.display = 'block'; // Показать видео
         video.volume = 1.0; // Установить громкость видео
         video.play();
