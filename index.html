@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>opra</title>
+    <title>Video & Music</title>
     <style>
         body {
             margin: 0;
@@ -31,17 +31,14 @@
             position: relative;
             z-index: 10;
         }
-        #rgb-background {
+        #banner-background {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 300px;
-            height: 100px;
-            background: linear-gradient(45deg, red, yellow, green, blue, purple);
-            background-size: 400% 400%;
-            animation: gradient 3s infinite;
-            border-radius: 12px;
+            width: 100%;
+            height: 100%;
+            background: url('BANNER.gif') center center / cover no-repeat;
             z-index: -1;
         }
         #start-button {
@@ -60,17 +57,12 @@
         #start-button:hover {
             background-color: #f1f1f1;
         }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
     </style>
 </head>
 <body>
 
 <div id="button-container">
-    <div id="rgb-background"></div>
+    <div id="banner-background"></div>
     <button id="start-button">Start Video & Music</button>
 </div>
 
@@ -88,16 +80,17 @@
 
 <script>
     const startButton = document.getElementById('start-button');
+    const buttonContainer = document.getElementById('button-container');
     const videoContainer = document.getElementById('video-container');
     const video = document.getElementById('video');
     const music = document.getElementById('music');
 
     startButton.addEventListener('click', () => {
-        document.getElementById('button-container').style.display = 'none'; // Скрыть кнопку
+        buttonContainer.style.display = 'none'; // Скрыть кнопку и GIF
         videoContainer.style.display = 'block'; // Показать видео
-        video.volume = 1.0; // Громкость видео
+        video.volume = 1.0; // Установить громкость видео
         video.play();
-        music.volume = 1.0; // Громкость музыки
+        music.volume = 1.0; // Установить громкость музыки
         music.play();
     });
 </script>
