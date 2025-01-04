@@ -73,10 +73,21 @@
         #start-button:active {
             background-color: #990000;
         }
+        #banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('BANNER.gif'); /* Укажите путь к вашему GIF */
+            background-size: cover;
+            z-index: -2;
+        }
     </style>
 </head>
 <body>
 
+<div id="banner"></div>
 <div id="button-container">
     <div id="rgb-background"></div>
     <button id="start-button">Play Video</button>
@@ -100,10 +111,12 @@
     const videoContainer = document.getElementById('video-container');
     const video = document.getElementById('video');
     const music = document.getElementById('music');
+    const banner = document.getElementById('banner');
 
     startButton.addEventListener('click', () => {
         buttonContainer.style.display = 'none'; // Убрать кнопку и RGB-фон
         videoContainer.style.display = 'block'; // Показать видео
+        banner.style.display = 'none'; // Убрать анимированный GIF
         video.volume = 1.0; // Установить громкость видео
         video.play();
         music.volume = 1.0; // Установить громкость музыки
