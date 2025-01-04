@@ -30,17 +30,20 @@
         #button-container {
             position: relative;
             z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         #rgb-background {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 70px;
             background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
             background-size: 400% 400%;
-            border-radius: 50%;
+            border-radius: 20px; /* Плавные углы */
             animation: rgbAnimation 2s infinite;
             z-index: -1;
         }
@@ -50,28 +53,25 @@
             100% { background-position: 0% 50%; }
         }
         #start-button {
-            position: relative;
-            background-color: black;
-            width: 60px;
-            height: 60px;
-            border: 3px solid white;
+            background-color: red;
+            width: 200px;
+            height: 50px;
+            border: none;
+            border-radius: 25px; /* Плавные углы */
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
             cursor: pointer;
             outline: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            color: white;
-            transform: rotate(45deg); /* Ротируем кнопку, чтобы она была ромбиком */
-        }
-        #start-button:before {
-            content: "";
-            width: 40px;
-            height: 40px;
-            background-color: white;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
         }
         #start-button:hover {
-            background-color: #333;
+            background-color: #cc0000;
+        }
+        #start-button:active {
+            background-color: #990000;
         }
     </style>
 </head>
@@ -79,7 +79,7 @@
 
 <div id="button-container">
     <div id="rgb-background"></div>
-    <button id="start-button"></button>
+    <button id="start-button">Play Video</button>
 </div>
 
 <div id="video-container">
